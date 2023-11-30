@@ -11,14 +11,7 @@ class Server {
 		this.app = express();
 		this.port = process.env.PORT;
 		this.server = require('http').createServer(this.app);
-		this.io = require('socket.io')(this.server, {
-			cors: {
-				origin: 'https://menu-host-front-dxa6.vercel.app', 
-				methods: ['GET', 'POST'],
-				allowedHeaders: '*',
-				credentials: true,
-			}
-		});
+		this.io = require('socket.io')(this.server);
 		this.paths = {
 			main: '/'
 		};
@@ -35,7 +28,7 @@ class Server {
 	middelewares() {
 
 // 		//directorio static
-// 		this.app.use(express.static(join(__dirname,'..', '../client/dist/')));
+		this.app.use(express.static(join(__dirname,'..', '../client/dist/')));
 
         // Middleware para desactivar el almacenamiento en caché a nivel global
         this.app.use((req, res, next) => {
