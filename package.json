@@ -8,8 +8,7 @@
   },
   "scripts": {
     "dev": "node index.js",
-    "start": "npm run build && node index.js",
-    "build": "cd ./client && npm install --omit=dev && npm run build"
+    "start": "node index.js"
   },
   "author": "duwoh developers",
   "license": "ISC",
